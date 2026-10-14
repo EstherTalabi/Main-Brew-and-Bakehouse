@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order • Brew & Bakehouse</title>
+  <meta name="description" content="Order espresso, signatures, cold brews, teas, dawn baked patisserie and all day plates for pickup in Yaba, Lagos.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Order • Brew &amp; Bakehouse">
+  <meta property="og:description" content="Order espresso, signatures, cold brews, teas, dawn baked patisserie and all day plates for pickup in Yaba, Lagos.">
+  <meta name="theme-color" content="#190e08">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23190e08'/%3E%3Ccircle cx='32' cy='32' r='29' fill='none' stroke='%23c9a26a' stroke-width='2'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f7f0e6' font-family='Georgia'%3EB%3C/text%3E%3C/svg%3E">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="topwrap"><span>Pickup in about 10 min • Yaba, Lagos</span><span class="topbar-right">Mon to Fri 7 to 7 • Sat 8 to 7</span></div></div>
+<nav class="navbar navbar-expand-lg px-3 px-lg-4 py-2" aria-label="Main navigation">
+  <div class="container-fluid" style="max-width:1200px">
+    <span class="navbar-brand brand-logo brand-static" aria-label="Brew and Bakehouse">Brew <span class="brand-sub">&amp; BAKEHOUSE</span></span>
+    <div class="d-flex align-items-center gap-2 ms-auto d-lg-none">
+      <a href="checkout.html" class="btn cart-btn cart-btn-sm" aria-label="View bag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h15l-1.5 12.5a1 1 0 0 1-1 .5h-11a1 1 0 0 1-1-.5z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg> <span class="m-label">Cart</span> <span class="cart-count">0</span></a>
+      <button class="navbar-toggler custom-toggler js-drawer-toggle" type="button" aria-controls="navMenu" aria-expanded="false" aria-label="Open menu">
+      <span class="tlines" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="tlabel tlabel-open" aria-hidden="true">Menu</span>
+      <span class="tlabel tlabel-close" aria-hidden="true">Close</span>
+    </button>
+    </div>
+    <div class="drawer navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-lg-4 text-center my-3 my-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><span class="dn" aria-hidden="true">01</span>Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="our-story.html"><span class="dn" aria-hidden="true">02</span>About us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="order.html" aria-current="page"><span class="dn" aria-hidden="true">03</span>Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="find-us.html"><span class="dn" aria-hidden="true">04</span>Visit</a></li>
+      </ul>
+      <div class="drawer-cart d-lg-none">
+        <a href="checkout.html" class="btn cart-btn justify-content-center" aria-label="View bag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h15l-1.5 12.5a1 1 0 0 1-1 .5h-11a1 1 0 0 1-1-.5z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg> CART <span class="cart-count">0</span></a>
+        <p class="drawer-note">Mon to Fri 7 to 7 • Yaba, Lagos</p>
+      </div>
+      <div class="d-none d-lg-block">
+        <a href="checkout.html" class="btn cart-btn justify-content-center" aria-label="View bag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h15l-1.5 12.5a1 1 0 0 1-1 .5h-11a1 1 0 0 1-1-.5z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg> CART <span class="cart-count">0</span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+<main id="main">
+  <section class="menu-section py-4 py-md-5" aria-labelledby="menuTitle">
+    <div class="container" style="max-width:1200px">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Order</span>
+      </nav>
+      <div class="menu-hero reveal">
+        <div class="row g-3 align-items-center">
+          <div class="col-12 col-lg-7">
+            <p class="eyebrow mb-2">Order for pickup</p>
+            <h1 class="section-title mb-1" id="menuTitle">The menu<span style="color:var(--gold)">.</span></h1>
+            <p class="section-text mb-2">Curated daily • espresso, signatures, cold brews, teas, dawn baked patisserie and all day plates.</p>
+            <ul class="menu-chips" aria-label="Ordering notes">
+              <li>Ready in about 10 min</li>
+              <li>Pay on pickup</li>
+              <li>Baked today</li>
+            </ul>
+            <p class="menu-count mt-2 mb-0" id="menuCount" role="status" aria-live="polite"></p>
+          </div>
+          <div class="col-12 col-lg-5">
+            <div class="search-box">
+              <div class="search-wrap search-wrap-hero">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <input type="search" id="menuSearch" placeholder="Search latte, croissant..." aria-label="Search menu" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchSuggest">
+              </div>
+              <div class="search-suggest" id="searchSuggest" hidden></div>
+            </div>
+          </div>
+        </div>
+        <div class="filter-scroll filter-bar" role="group" aria-label="Filter by category">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" data-filter="espresso" aria-pressed="false">Espresso</button>
+          <button class="filter-btn" data-filter="specials" aria-pressed="false">Signatures</button>
+          <button class="filter-btn" data-filter="cold" aria-pressed="false">Cold</button>
+          <button class="filter-btn" data-filter="bakery" aria-pressed="false">Bakery</button>
+          <button class="filter-btn" data-filter="tea" aria-pressed="false">Tea</button>
+          <button class="filter-btn" data-filter="plates" aria-pressed="false">Plates</button>
+        </div>
+      </div>
+      <div class="menu-steps reveal" aria-label="How ordering works">
+        <div><b>1</b><span>Pick your items</span></div>
+        <div><b>2</b><span>Checkout in seconds</span></div>
+        <div><b>3</b><span>Pickup by name</span></div>
+      </div>
+      <div id="menuList">
+        <section class="menu-category" id="cat-espresso" data-category-section="espresso" aria-labelledby="h-espresso">
+          <header class="menu-category-head">
+            <div>
+                            <p class="eyebrow">01 • Espresso</p>
+<h2 id="h-espresso">Espresso, dialed in</h2>
+              <p class="section-text">Short, strong and silky. Ground fresh for every cup.</p>
+            </div>
+            <span class="menu-category-count" data-section-count></span>
+          </header>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Espresso</h3><span class="price">₦2,500</span></div>
+                <p class="desc">Single shot of our daily blend.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Espresso" data-price="2500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Macchiato</h3><span class="price">₦5,000</span></div>
+                <p class="desc">Espresso with a kiss of milk foam.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Macchiato" data-price="5000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">Guest favorite</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Cortado</h3><span class="price">₦3,000</span></div>
+                <p class="desc">Short and strong with warm milk.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Cortado" data-price="3000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Americano</h3><span class="price">₦2,800</span></div>
+                <p class="desc">Long and smooth, hot water over espresso.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Americano" data-price="2800">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Latte</h3><span class="price">₦3,200</span></div>
+                <p class="desc">Smooth, milky, comforting.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Latte" data-price="3200">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Cappuccino</h3><span class="price">₦3,000</span></div>
+                <p class="desc">Equal parts espresso, steamed milk and foam.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Cappuccino" data-price="3000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">Barista pick</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Flat White</h3><span class="price">₦3,200</span></div>
+                <p class="desc">Double shot under smooth velvety microfoam.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Flat White" data-price="3200">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Mocha</h3><span class="price">₦3,500</span></div>
+                <p class="desc">Espresso, dark chocolate, steamed milk.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Mocha" data-price="3500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">New</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Affogato</h3><span class="price">₦4,200</span></div>
+                <p class="desc">Double espresso poured over vanilla ice cream.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Affogato" data-price="4200">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="espresso">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">New</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Espresso Tonic</h3><span class="price">₦3,800</span></div>
+                <p class="desc">Espresso, tonic water, ice and orange peel.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">ESPRESSO</span><button class="btn add-btn" data-name="Espresso Tonic" data-price="3800">Add</button></div>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="menu-category" id="cat-specials" data-category-section="specials" aria-labelledby="h-specials">
+          <header class="menu-category-head">
+            <div>
+                            <p class="eyebrow">02 • Signatures</p>
+<h2 id="h-specials">House signatures</h2>
+              <p class="section-text">Icons and seasonal favorites. Start with Sunrise.</p>
+            </div>
+            <span class="menu-category-count" data-section-count></span>
+          </header>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="specials">
+              <article class="menu-item menu-featured">
+                <div><span class="signature-badge mb-2">★ House signature</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Sunrise Special</h3><span class="price">₦5,000</span></div>
+                <p class="desc">Our signature: espresso, orange zest, honey, oat milk.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">SIGNATURES</span><button class="btn add-btn" data-name="Sunrise Special" data-price="5000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="specials">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">Bestseller</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Spanish Latte</h3><span class="price">₦3,800</span></div>
+                <p class="desc">Condensed milk, espresso, silky steamed milk.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">SIGNATURES</span><button class="btn add-btn" data-name="Spanish Latte" data-price="3800">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="specials">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Honey Oat Latte</h3><span class="price">₦3,900</span></div>
+                <p class="desc">Honey, oat milk, double espresso.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">SIGNATURES</span><button class="btn add-btn" data-name="Honey Oat Latte" data-price="3900">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="specials">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Salted Caramel Latte</h3><span class="price">₦4,000</span></div>
+                <p class="desc">Caramel, sea salt, espresso, steamed milk.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">SIGNATURES</span><button class="btn add-btn" data-name="Salted Caramel Latte" data-price="4000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="specials">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">New</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Pistachio Latte</h3><span class="price">₦4,500</span></div>
+                <p class="desc">Pistachio cream, espresso, steamed milk.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">SIGNATURES</span><button class="btn add-btn" data-name="Pistachio Latte" data-price="4500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="specials">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">New</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Tiramisu Latte</h3><span class="price">₦4,500</span></div>
+                <p class="desc">Cocoa, mascarpone notes, espresso, milk.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">SIGNATURES</span><button class="btn add-btn" data-name="Tiramisu Latte" data-price="4500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="specials">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Matcha Latte</h3><span class="price">₦3,800</span></div>
+                <p class="desc">Ceremonial grade matcha, oat milk, hint of vanilla.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">SIGNATURES</span><button class="btn add-btn" data-name="Matcha Latte" data-price="3800">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="specials">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Chai Latte</h3><span class="price">₦3,500</span></div>
+                <p class="desc">Spiced chai blend with steamed milk, warm and comforting.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">SIGNATURES</span><button class="btn add-btn" data-name="Chai Latte" data-price="3500">Add</button></div>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="menu-category" id="cat-cold" data-category-section="cold" aria-labelledby="h-cold">
+          <header class="menu-category-head">
+            <div>
+                            <p class="eyebrow">03 • Cold</p>
+<h2 id="h-cold">Cold and refreshing</h2>
+              <p class="section-text">Iced, steeped and blended. Built for warm afternoons.</p>
+            </div>
+            <span class="menu-category-count" data-section-count></span>
+          </header>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="cold">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Iced Latte</h3><span class="price">₦3,300</span></div>
+                <p class="desc">Espresso over ice, topped with cold milk.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">COLD</span><button class="btn add-btn" data-name="Iced Latte" data-price="3300">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="cold">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">Bestseller</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Cold Brew</h3><span class="price">₦3,500</span></div>
+                <p class="desc">Steeped 18 hours, served over ice.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">COLD</span><button class="btn add-btn" data-name="Cold Brew" data-price="3500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="cold">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Iced Americano</h3><span class="price">₦3,000</span></div>
+                <p class="desc">Espresso, cold water, lots of ice.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">COLD</span><button class="btn add-btn" data-name="Iced Americano" data-price="3000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="cold">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">New</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Orange Espresso Cooler</h3><span class="price">₦4,200</span></div>
+                <p class="desc">Espresso, fresh orange, tonic, ice.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">COLD</span><button class="btn add-btn" data-name="Orange Espresso Cooler" data-price="4200">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="cold">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Fresh Orange Juice</h3><span class="price">₦5,000</span></div>
+                <p class="desc">Freshly squeezed, served chilled.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">COLD</span><button class="btn add-btn" data-name="Fresh Orange Juice" data-price="5000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="cold">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Mango Smoothie</h3><span class="price">₦3,000</span></div>
+                <p class="desc">Fresh mango, banana, a squeeze of lime.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">COLD</span><button class="btn add-btn" data-name="Mango Smoothie" data-price="3000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="cold">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Pineapple Ginger Cooler</h3><span class="price">₦3,200</span></div>
+                <p class="desc">Pineapple, ginger, lime, served chilled.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">COLD</span><button class="btn add-btn" data-name="Pineapple Ginger Cooler" data-price="3200">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="cold">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Chocolate Frappe</h3><span class="price">₦3,800</span></div>
+                <p class="desc">Blended chocolate, milk and ice, crowned with foam.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">COLD</span><button class="btn add-btn" data-name="Chocolate Frappe" data-price="3800">Add</button></div>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="menu-category" id="cat-bakery" data-category-section="bakery" aria-labelledby="h-bakery">
+          <header class="menu-category-head">
+            <div>
+                            <p class="eyebrow">04 • Bakery</p>
+<h2 id="h-bakery">Dawn baked patisserie</h2>
+              <p class="section-text">Laminated, proofed and baked fresh today.</p>
+            </div>
+            <span class="menu-category-count" data-section-count></span>
+          </header>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">Baked at dawn</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Butter Croissant</h3><span class="price">₦2,500</span></div>
+                <p class="desc">Flaky, golden, baked at dawn.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Butter Croissant" data-price="2500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">Bestseller</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Almond Croissant</h3><span class="price">₦2,800</span></div>
+                <p class="desc">Buttery, flaky, almond cream filled.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Almond Croissant" data-price="2800">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Pain au Chocolat</h3><span class="price">₦2,900</span></div>
+                <p class="desc">Flaky pastry, dark chocolate batons.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Pain au Chocolat" data-price="2900">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Morning Bun</h3><span class="price">₦2,700</span></div>
+                <p class="desc">Cinnamon sugar laminated dough.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Morning Bun" data-price="2700">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Banana Bread</h3><span class="price">₦2,500</span></div>
+                <p class="desc">Brown butter, walnuts, dark sugar.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Banana Bread" data-price="2500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Chocolate Muffin</h3><span class="price">₦2,500</span></div>
+                <p class="desc">Double chocolate, soft centre, crispy top.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Chocolate Muffin" data-price="2500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Blueberry Scone</h3><span class="price">₦2,700</span></div>
+                <p class="desc">Buttery, crumbly, packed with fresh blueberries.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Blueberry Scone" data-price="2700">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Sourdough Toast</h3><span class="price">₦2,500</span></div>
+                <p class="desc">Thick cut, cultured butter, sea salt flakes.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Sourdough Toast" data-price="2500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Cheesecake Slice</h3><span class="price">₦3,200</span></div>
+                <p class="desc">Baked vanilla cheesecake, biscuit base.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Cheesecake Slice" data-price="3200">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="bakery">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">New</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Carrot Cake Slice</h3><span class="price">₦3,000</span></div>
+                <p class="desc">Spiced carrot cake, cream cheese frosting.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">BAKERY</span><button class="btn add-btn" data-name="Carrot Cake Slice" data-price="3000">Add</button></div>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="menu-category" id="cat-tea" data-category-section="tea" aria-labelledby="h-tea">
+          <header class="menu-category-head">
+            <div>
+                            <p class="eyebrow">05 • Tea</p>
+<h2 id="h-tea">Calm cups</h2>
+              <p class="section-text">Gentle caffeine, served hot or iced.</p>
+            </div>
+            <span class="menu-category-count" data-section-count></span>
+          </header>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="tea">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Earl Grey</h3><span class="price">₦2,500</span></div>
+                <p class="desc">Classic black tea, bergamot aroma.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">TEA</span><button class="btn add-btn" data-name="Earl Grey" data-price="2500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="tea">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Green Tea</h3><span class="price">₦2,500</span></div>
+                <p class="desc">Light and fresh, gentle caffeine.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">TEA</span><button class="btn add-btn" data-name="Green Tea" data-price="2500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="tea">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Mint Tea</h3><span class="price">₦2,500</span></div>
+                <p class="desc">Fresh mint leaves, naturally caffeine free.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">TEA</span><button class="btn add-btn" data-name="Mint Tea" data-price="2500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="tea">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">Iced option</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Hibiscus Tea</h3><span class="price">₦2,800</span></div>
+                <p class="desc">Tart and floral, served hot or iced.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">TEA</span><button class="btn add-btn" data-name="Hibiscus Tea" data-price="2800">Add</button></div>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="menu-category" id="cat-plates" data-category-section="plates" aria-labelledby="h-plates">
+          <header class="menu-category-head">
+            <div>
+                            <p class="eyebrow">06 • Plates</p>
+<h2 id="h-plates">Hearty plates</h2>
+              <p class="section-text">Breakfast and lunch plates, served all day.</p>
+            </div>
+            <span class="menu-category-count" data-section-count></span>
+          </header>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="plates">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">All day</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Eggs on Sourdough</h3><span class="price">₦5,500</span></div>
+                <p class="desc">Two eggs any style on toasted sourdough.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">PLATES</span><button class="btn add-btn" data-name="Eggs on Sourdough" data-price="5500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="plates">
+              <article class="menu-item">
+                <div><span class="signature-badge mb-2">Guest favorite</span></div>
+                <div class="d-flex justify-content-between"><h3 class="h5">Avocado Toast</h3><span class="price">₦6,000</span></div>
+                <p class="desc">Smashed avocado, lime, sea salt, sourdough.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">PLATES</span><button class="btn add-btn" data-name="Avocado Toast" data-price="6000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="plates">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Granola Bowl</h3><span class="price">₦5,000</span></div>
+                <p class="desc">House granola, yogurt, honey, fresh fruit.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">PLATES</span><button class="btn add-btn" data-name="Granola Bowl" data-price="5000">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="plates">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Chicken Pie</h3><span class="price">₦3,500</span></div>
+                <p class="desc">Flaky pastry, savory chicken filling.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">PLATES</span><button class="btn add-btn" data-name="Chicken Pie" data-price="3500">Add</button></div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 menu-card" data-category="plates">
+              <article class="menu-item">
+                <div class="d-flex justify-content-between"><h3 class="h5">Meat Pie</h3><span class="price">₦3,000</span></div>
+                <p class="desc">Classic beef filling, golden crust.</p>
+                <div class="d-flex justify-content-between align-items-center"><span class="tag">PLATES</span><button class="btn add-btn" data-name="Meat Pie" data-price="3000">Add</button></div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="noResults" class="text-center py-5 d-none">
+        <p class="h5">No matches found.</p>
+        <p class="text-muted">Try "latte", "croissant" or clear the search.</p>
+        <button class="btn btn-dark-outline" id="clearSearchBtn">Clear search</button>
+      </div>
+      <section class="office-band reveal" id="office-box" aria-labelledby="officeTitle">
+        <div class="office-head">
+          <div>
+            <h2 id="officeTitle">The Office Box</h2>
+            <p class="mb-0 small" style="color:#d8cbbc">One coffee plus one pastry per person, boxed with names. Order before 9am for one pickup.</p>
+          </div>
+          <span class="menu-category-count">One tap box</span>
+        </div>
+        <div class="group-ticket" id="groupTicket">
+          <div class="group-main">
+            <div class="group-stepper" aria-label="Number of people">
+              <button class="qty-btn" id="gMinus" aria-label="Fewer people">−</button>
+              <span class="qty-num" id="gCount">6</span>
+              <button class="qty-btn" id="gPlus" aria-label="More people">+</button>
+              <span class="group-people">people</span>
+            </div>
+            <p class="group-summary" id="gSummary" role="status" aria-live="polite"></p>
+          </div>
+          <div class="group-stub">
+            <button class="btn btn-cream w-100" id="gAddBtn">Add box to bag</button>
+            <p class="mb-0 mt-2 small" style="color:#d8cbbc">Swaps welcome. Tell us in Special Requests at checkout.</p>
+          </div>
+        </div>
+      </section>
+      <p class="text-center text-muted small mt-4 mb-0">All prices in naira. Pay on pickup. Baked fresh today.</p>
+      <div class="text-center mt-3 d-grid d-sm-block">
+        <a href="checkout.html" class="btn btn-dark-pill">Go to cart • <span id="menuCartTotal">₦0</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="sticky-orderbar" id="stickyBar" aria-live="polite">
+  <div class="sticky-inner">
+    <div><small>Your pickup bag</small><strong id="stickyCartTotal">₦0</strong></div>
+    <a href="checkout.html" class="btn btn-cream btn-sm">View bag</a>
+  </div>
+</div>
+<footer class="footer-premium">
+  <div class="container" style="max-width:1200px">
+    <div class="foot-cta">
+      <div>
+        <p class="foot-cta-title">Craving it now?</p>
+      </div>
+      <div class="d-flex flex-column flex-sm-row gap-2">
+        <a href="order.html" class="btn btn-cream text-center">Start an order</a>
+        <a href="find-us.html" class="btn btn-outline-cream text-center">Find the shop</a>
+      </div>
+    </div>
+    <div class="footer-grid footer-grid-premium">
+      <div>
+        <p class="brand-logo mb-2">Brew <span class="brand-sub">&amp; BAKEHOUSE</span></p>
+        <p class="foot-note">Specialty coffee and same day patisserie in Yaba, Lagos.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="our-story.html">About us</a></li>
+          <li><a href="order.html">Order</a></li>
+          <li><a href="find-us.html">Visit</a></li>
+          <li><a href="checkout.html">Cart</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>14 Herbert Macaulay Way, Yaba</li>
+          <li><a href="https://www.google.com/maps/search/14+Herbert+Macaulay+Way+Yaba+Lagos" target="_blank" rel="noopener">Get directions →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon to Fri 7 to 7</li>
+          <li>Sat 8 to 7</li>
+          <li>Sun 9 to 5</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brew &amp; Bakehouse</span>
+      <span>Roasted with care in Lagos ✦</span>
+    </div>
+  </div>
+</footer>
+  <a class="wa-float" href="https://wa.me/2349159898348?text=Hello%20Brew%20and%20Bakehouse!" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.4 1.6z"/></svg>
+    <span>Chat with us</span>
+  </a>
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

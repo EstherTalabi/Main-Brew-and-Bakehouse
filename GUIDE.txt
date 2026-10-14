@@ -1,0 +1,448 @@
+================================================================
+BREW AND BAKEHOUSE • COMPLETE EXPLANATION AND GUIDELINES
+A beginner friendly guide to the whole project
+================================================================
+
+Welcome. This file explains everything about the Brew and
+Bakehouse website in plain language. If you are new to
+programming, read it top to bottom. Every big idea is
+explained before it is used.
+
+----------------------------------------------------------------
+1. WHAT THIS PROJECT IS
+----------------------------------------------------------------
+
+Brew and Bakehouse is a small static website for a coffee and
+pastry shop in Yaba, Lagos. Static means there is no server and
+no database. The site is just files. A browser opens them and
+everything runs inside the browser.
+
+Guests can:
+  * Read the story of the shop
+  * Browse the menu (45 items across 6 categories)
+  * Search and filter the menu with instant results
+  * Add items to a pickup bag (the cart)
+  * Check out with name, phone, email and pickup time
+  * Send the same order through WhatsApp
+  * Build a one tap Office Box for teams of 5 or more
+  * Find the address, hours and map
+
+----------------------------------------------------------------
+2. PROJECT STRUCTURE (THE FILES)
+----------------------------------------------------------------
+
+  brew and bakehouse folder
+  |
+  |-- index.html        Home page (hero, signatures, craft story,
+  |                     reviews, team band, visit teaser)
+  |-- our-story.html    About us page (story, roast/bake/brew,
+  |                     promise and stats)
+  |-- order.html        Order page (search, filters, 45 items in
+  |                     6 sections, Office Box band, sticky bag bar)
+  |-- find-us.html      Visit page (address, hours, map, slim
+  |                     Office Box link)
+  |-- checkout.html     Checkout page (bag, totals, form,
+  |                     WhatsApp lane, success message)
+  |-- css/style.css     ALL the styling for every page
+  |-- js/script.js      ALL the interactive logic, shared by
+  |                     every page through one script tag
+  |-- images/           Photos used on Home and About
+  |-- README.md         Short project note
+  |-- GUIDE.txt         This file. You are here.
+
+Every HTML page ends with the same two lines: the Bootstrap
+library and our own script:
+
+  <script src="...bootstrap..."></script>
+  <script src="js/script.js"></script>
+
+That is why one edit in js/script.js can change behaviour on
+every page at once.
+
+----------------------------------------------------------------
+3. HOW THE PAGES CONNECT (SITE MAP)
+----------------------------------------------------------------
+
+  [Home index.html]
+    Start an order  -> order.html
+    Our story       -> our-story.html
+    Build an Office Box -> order.html#office-box
+    Directions      -> find-us.html
+
+  [About our-story.html]
+    Taste the story -> order.html
+    Plan your visit -> find-us.html
+
+  [Order order.html]
+    Go to cart      -> checkout.html
+    View bag        -> checkout.html (sticky bar)
+
+  [Visit find-us.html]
+    Order ahead     -> order.html
+    See Office Box  -> order.html#office-box
+
+  [Checkout checkout.html]
+    Browse the menu -> order.html
+    View bag/cart   -> stays here
+    WhatsApp button -> opens WhatsApp chat in a new tab
+
+House rule: the brand logo in the top bar is plain text, NOT a
+link. Guests move between pages only through the menu items:
+Home, About us, Order, Visit, plus the Cart button. This was a
+deliberate choice so every move is explicit.
+
+----------------------------------------------------------------
+4. CORE CONCEPTS (BEGINNER CORNER)
+----------------------------------------------------------------
+
+4.1 HTML • the skeleton.
+HTML is markup. Tags like <h1>, <p>, <button> and <section>
+describe WHAT content is. Example:
+
+  <h1 class="section-title">The menu.</h1>
+
+h1 means "the main heading". class="section-title" attaches a
+style name that CSS can target.
+
+4.2 CSS • the clothing.
+CSS rules describe HOW things look: colors, sizes, spacing.
+Example:
+
+  .btn-dark-pill { background-color: #2b1a14; border-radius: 50px; }
+
+The dot means "class". So .btn-dark-pill styles every element
+with class="btn-dark-pill". Our design tokens live at the top
+of style.css inside :root, for example --gold: #c9a26a. Change
+one token and every gold detail on the site updates.
+
+4.3 Bootstrap • borrowed layout parts.
+Bootstrap is a free CSS library loaded from the internet (a
+CDN link in <head>). We use its grid (row, col-12, col-md-6)
+and buttons, then override the look with our own CSS. Think of
+it as scaffolding we decorate ourselves.
+
+4.4 JavaScript • the muscles.
+JavaScript (js/script.js) makes the site react: adding to bag,
+filtering, searching, checkout validation. It runs after the
+page loads because the <script> tag sits at the end of <body>.
+
+4.5 DOM • the live page.
+When the browser reads HTML it builds a tree called the DOM
+(Document Object Model). JavaScript finds nodes with
+document.getElementById("menuSearch") or
+document.querySelectorAll(".add-btn") and then reads or
+changes them.
+
+4.6 Events • cause and effect.
+An event is something that happens: click, input, submit.
+We attach listeners: "when X happens, run this function".
+
+  button.addEventListener("click", function () { ... });
+
+4.7 localStorage • memory that survives reloads.
+localStorage is a tiny key value store inside the browser.
+Our bag is saved under the key "bb_cart_v2" as JSON text, so
+closing the tab does not empty the bag. JSON is just a text
+format for data: [{"name":"Latte","price":3200,"qty":2}].
+
+4.8 Responsive design.
+The layout adapts to screen width: 1 column on phones, 2 on
+tablets, 3 on desktops. Tools used: Bootstrap grid classes,
+CSS media queries (@media blocks), fluid type with clamp()
+which means "never smaller than X, never bigger than Y".
+
+4.9 Accessibility (a11y).
+Labels for screen readers (aria-label), focus outlines,
+skip link, live regions that announce counts. Good sites work
+for keyboard users and screen reader users too.
+
+----------------------------------------------------------------
+5. ARCHITECTURE AND DATA FLOW
+----------------------------------------------------------------
+
+There is no backend. Data flows like this:
+
+  MENU BUTTON (order.html)
+      |
+      |  click, reads data-name + data-price
+      v
+  CART ARRAY in memory  --->  localStorage "bb_cart_v2"
+      |                              |
+      |  updateBadges()               |  survives reload
+      v                              v
+  NAV BADGES + TOTALS <--- loaded on every page start
+
+  CHECKOUT (checkout.html)
+      |
+      |  renderCart() reads cart array, builds rows
+      v
+  FORM -> validate (fields + pickup rules) -> SUCCESS
+      |                                      clears cart
+      +-> WhatsApp lane -> wa.me link with encoded order
+
+  SEARCH (order.html)
+      |
+      |  each keystroke -> applyMenuFilters() + renderSuggest()
+      v
+  GRID HIDES NON MATCHES + dropdown shows top 6 instantly
+
+One script serves all pages. Each page only uses the parts it
+needs: blocks are guarded, e.g. `if (cartBox) {...}` means
+"only run the cart code when the bag box exists on this page".
+
+----------------------------------------------------------------
+6. THE ROLE OF MAJOR LINES OF CODE
+----------------------------------------------------------------
+
+A. Navbar badge updater (js/script.js, updateBadges):
+   document.querySelectorAll(".cart-count")...
+   Finds BOTH bag badges (mobile pill + desktop pill) and sets
+   the total quantity. Also refreshes menu totals and shows or
+   hides the sticky bag bar. Called after every bag change.
+
+B. Delegated Add handler:
+   document.addEventListener("click", ... closest(".add-btn"))
+   Instead of wiring each button, ONE listener watches the
+   whole document and reacts when any Add button is clicked.
+   This is why Add buttons created later (instant search
+   results) work without extra code. Pattern name: event
+   delegation. Remember it. It is used everywhere in real jobs.
+
+C. Menu filter (applyMenuFilters):
+   For each card, checks category match AND search text match,
+   toggles the .hidden class, then hides whole sections with
+   zero visible cards and updates per section counts plus the
+   global count line. One function keeps grid, sections and
+   counts consistent.
+
+D. Instant search (renderSuggest):
+   On input with 2 or more letters, collects matching items,
+   renders up to 6 rows with their own Add buttons, plus a
+   "See all N results" button that smooth scrolls to the grid.
+   Enter jumps, Escape closes. This removes the "type then
+   scroll and hope" problem.
+
+E. Bag rendering (renderCart):
+   Builds the bag rows as HTML strings from the cart array,
+   escapes names with esc() to block injected markup (a basic
+   anti hacking habit called output escaping), then attaches
+   plus, minus and remove listeners to the fresh buttons.
+
+F. Pickup guardrails (OPEN_HOURS, validatePickup):
+   OPEN_HOURS maps weekday number to open and close minutes.
+   validatePickup rejects times outside hours or less than 15
+   minutes away, with a specific message per case. Both Place
+   Order and WhatsApp reuse it, so the rule can never drift
+   between the two lanes.
+
+G. WhatsApp composer:
+   Reads the live bag plus the form, joins lines like
+   "2 x Flat White (N6400)", adds total, name, phone, pickup
+   and notes, then opens wa.me/<number>?text=<encoded message>
+   in a new tab. encodeURIComponent makes special characters
+   URL safe. The shop number lives in SHOP_WHATSAPP at the top
+   of the checkout block. Change it in ONE place.
+
+H. Office Box estimator (gCount block):
+   Stepper between 5 and 50 heads. Summary shows coffees plus
+   pastries plus estimate. Add box pushes Flat White x N and
+   Butter Croissant x N into the bag. Same cart, same badges.
+
+I. Reveal on scroll (IntersectionObserver):
+   Watches .reveal elements and adds .in when they enter view.
+   CSS animates opacity and position. Older browsers get the
+   fallback that simply shows everything.
+
+J. Sticky bag bar + counts (updateBadges tail):
+   Shows the bottom bar only when quantity is above zero, so
+   the page never nags with an empty bar.
+
+K. Design tokens (:root in style.css):
+   --cream, --espresso, --gold, --rust and shadows. To rebrand,
+   change these values first before touching anything else.
+
+----------------------------------------------------------------
+7. HOUSE GUIDELINES (MUST FOLLOW)
+----------------------------------------------------------------
+
+7.1 Copy rule: NO dash symbols between words.
+Never use hyphen or en/em dash characters in visible text. Use these
+instead:
+  * separator  -> bullet •  (example: "Curated daily • espresso")
+  * ranges     -> the word "to" (example: "Mon to Fri 7 to 7")
+  * compounds  -> plain spaces (example: "Same day", "Small batch")
+Code hyphens (class names like brand-sub, file names) are
+fine. This rule is about human readable text only.
+
+7.2 File naming.
+Pages have unique meaningful names: index (Home), our-story,
+order, find-us, checkout. Link to these exact names. Never
+reintroduce about.html, menu.html, visit.html or cart.html.
+
+7.3 One script, guarded blocks.
+All logic lives in js/script.js. Page specific code must be
+wrapped in an existence check like `if (cartBox) {...}` so
+other pages never crash.
+
+7.4 UTF-8 always.
+Files are UTF-8. Naira, stars and arrows are literal UTF-8
+characters. Never bulk rewrite files with tools that default
+to another encoding, or symbols turn into ? and boxes.
+
+7.5 Accessibility checklist for every new element:
+visible label, keyboard reachable, focus style intact, aria
+attributes where the design uses icon only buttons.
+
+----------------------------------------------------------------
+8. COOKBOOK (COMMON TASKS, STEP BY STEP)
+----------------------------------------------------------------
+
+ADD A MENU ITEM (example: Vanilla Latte, 3600, specials):
+  1. Open order.html, find the SIGNATURES section.
+  2. Copy any full menu-card block inside it.
+  3. Change the h3 name, the price text, the desc and BOTH
+     data-name and data-price on the button (they must match).
+  4. Keep copy dash free. Reload, search it, filter it, add it.
+  No JavaScript change needed. The grid, counts, search and
+  bag pick it up automatically.
+
+CHANGE A PRICE:
+  Change the visible price AND data-price together. For Office
+  Box items also update the matching price in the estimator
+  block of js/script.js (COFFEE and PASTRY constants).
+
+CHANGE OPENING HOURS (TWO places, keep in sync):
+  1. find-us.html hours rows (what guests read).
+  2. OPEN_HOURS in js/script.js (what checkout enforces).
+
+CHANGE THE WHATSAPP NUMBER:
+  js/script.js, SHOP_WHATSAPP constant, digits only with
+  country code, e.g. "2348012345678". One place. Done.
+
+ADD A NEW CATEGORY (example: combos):
+  1. order.html: add a filter button data-filter="combos",
+     a cat section data-category-section="combos" with cards
+     data-category="combos".
+  2. Nothing else. The filter, counts and search are generic.
+  3. Update the "across 6 categories" sentence if you want the
+     count line exact (it says 6 today; code counts items, the
+     word 6 is static text).
+
+REBRAND COLORS:
+  Edit :root tokens in css/style.css first, then spot check
+  hero, footer and badges.
+
+----------------------------------------------------------------
+9. GLOSSARY (WORDS YOU WILL MEET)
+----------------------------------------------------------------
+
+  class ......... style name shared by many elements (.btn)
+  id ............ unique name for ONE element (#menuSearch)
+  selector ...... pattern that picks elements (.menu-card)
+  media query ... CSS rule that applies only at some widths
+  clamp() ....... fluid size with minimum and maximum
+  CDN ........... library loaded from the internet
+  DOM ........... live tree version of the page
+  event ......... click, input, submit and friends
+  listener ...... function waiting for an event
+  delegation .... one listener handling many elements
+  JSON .......... text format for structured data
+  localStorage .. browser key value memory across reloads
+  encodeURIComponent .. makes text safe inside a URL
+  aria .......... attributes that describe UI to screen readers
+  guard ......... `if (exists)` check before running code
+  normalize ..... cleaning data into a safe standard shape
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+10. NEW SYSTEMS (ADDED AFTER THE FIRST GUIDE)
+----------------------------------------------------------------
+
+10.1 Local hero image.
+The home hero uses images/hero-image.avif (loaded with a
+preload tag in index.html). No more internet photo
+dependency. To change it, replace that file and keep the name,
+or update the url inside .hero in css/style.css.
+
+10.2 Sold out flags.
+js/script.js has a list called SOLD_OUT near the Add to bag
+code. Add an exact item name to mark it sold out everywhere:
+  const SOLD_OUT = ["Almond Croissant"];
+The button becomes "Sold out", the card dims and gains a
+badge, and instant search skips it. Empty list means all
+available. One line change, whole site obeys.
+
+10.3 Last order memory.
+After a successful order the receipt is saved under
+"bb_last_order_v1": number, items, total, name, time,
+fulfillment and address. On the next visit to checkout with
+an empty bag, a gold panel shows the last order with an
+"Order again" button that restores the bag in one tap.
+
+10.4 Team treat discount.
+Two numbers control it, next to the Office Box code:
+  TEAM_TREAT_MIN = 10, TEAM_TREAT_PCT = 5
+At 10 or more heads the box summary shows the unlocked treat
+and the reduced estimate. The treat is honored by staff at
+pickup, so totals in the bag never change silently. To change
+the deal, edit those two numbers, then update the matching
+sentence on index.html ("Teams of 10 or more get 5% off").
+
+10.5 Delivery lane.
+Checkout has a Pickup or Delivery toggle. Delivery adds an
+address field plus a zone menu built from DELIVERY_ZONES
+(Yaba, Surulere, Lagos Island with fees) and orders over
+FREE_DELIVERY_OVER pay no fee. Totals show Items plus fee
+plus grand total. Validation requires an address only for
+delivery. Success message, saved receipt and WhatsApp message
+all include fulfillment, fee and address. Change zones, fees
+and the free threshold in the constants at the top of the
+checkout block.
+
+10.6 Loyalty stamps.
+Every placed order adds one stamp under "bb_loyalty_v1". The
+checkout page shows progress ("Your stamps: 3 of 9") and every
+9th order prints "Treat unlocked" in the success message. The
+free pastry is honored by staff on sight of the screen.
+
+10.7 Live queue estimate.
+updateEta() computes ready time as 10 minutes base plus 2
+minutes per item (capped at 30 extra) plus 15 more for
+delivery, and prints "Ready about 2:45pm" under the totals.
+Tune the numbers inside updateEta() if the kitchen is faster
+or slower.
+
+10.8 WhatsApp number.
+js/script.js, SHOP_WHATSAPP constant, now live as
+"2349159898348" (digits with country code). The button
+composes the live bag plus form details into a wa.me link.
+If the number ever changes, this one constant is the only
+place to edit.
+
+----------------------------------------------------------------
+10.9 Navigation, eyebrows and orientation (latest pass).
+Mobile menu is a side drawer, not a dropdown. The hamburger
+(js-drawer-toggle) toggles body.drawer-open; links rise in
+with a stagger; it closes on link tap, Escape or resize to
+desktop. No backdrop dims the page, by design.
+The hamburger and the mobile bag button are twin 44px icon
+circles (bag icon with floating count, morphing lines). Their
+text labels are hidden on small screens only; desktop pills
+keep full labels. Badge counts update through the shared
+.cart-count class, so never use that id again.
+Eyebrow kicker words stay (01 • Espresso, Your cart), but the
+gold dash line in front was removed from the stylesheet. Rule
+7.1 still bans dash characters in visible copy.
+Breadcrumbs (.breadcrumb-nav) sit atop About, Visit, Order
+and Checkout. Home has none, which is correct: the homepage
+is the root, so a trail pointing at itself adds noise.
+Hero on phones is compact (min-height 0, 84px bottom pad) so
+the paper curve shows on landing and never covers the Hours
+button. Touch those two values together or the button slides
+back under the curve.
+
+----------------------------------------------------------------
+END OF GUIDE. Start by opening index.html in a browser, then
+read section 6 with js/script.js open beside it. Within one
+afternoon the whole project will feel familiar.
+================================================================
