@@ -80,19 +80,13 @@ textarea:focus-visible {
 }
 
 .brand-logo {
-  font-size: 1.1rem;
+  font-family: var(--serif);
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--dark-brown) !important;
   white-space: nowrap;
-  letter-spacing: .2px;
-}
-
-.brand-sub {
-  font-size: 0.6rem;
-  letter-spacing: 2.4px;
-  color: var(--text-grey);
-  font-family: 'DM Sans', sans-serif;
-  margin-left: 6px;
+  letter-spacing: .8px;
+  text-transform: uppercase;
 }
 
 .nav-link {
@@ -587,7 +581,7 @@ textarea:focus-visible {
 
 /* ---------- SMALL SCREENS ---------- */
 @media (max-width: 575.98px) {
-  .brand-logo { font-size: 1.15rem; }
+  .brand-logo { font-size: 1.05rem; }
   .hero { min-height: 0; padding-top: 2.2rem; padding-bottom: 84px; }
   .hero::after { height: 52px; }
   .hero .btn { width: 100%; text-align: center; }
@@ -645,8 +639,6 @@ nav.navbar.scrolled { box-shadow: 0 10px 30px rgba(25,14,8,.1); padding-top: .5r
 @media (min-width: 992px) {
   .nav-link .dn { display: none; }
 }
-.brand-logo { letter-spacing: .2px; }
-.brand-logo::first-letter { color: var(--rust); }
 .brand-static { cursor: default; user-select: none; text-decoration: none !important; }
 .brand-static:hover { color: var(--dark-brown) !important; }
 
@@ -1060,7 +1052,6 @@ nav.navbar.scrolled { box-shadow: 0 10px 30px rgba(25,14,8,.1); padding-top: .5r
   .footer-grid-premium a, .footer-grid-premium li { font-size: .9rem; }
 }
 .footer-premium .brand-logo { color: var(--cream); }
-.footer-premium .brand-sub { color: var(--gold-soft); }
 .foot-note { color: #cbbfae; font-size: .9rem; max-width: 22rem; margin: 0; }
 .footer-premium h4 { color: var(--gold-soft); }
 .footer-premium .footer-grid a { color: var(--cream); }
