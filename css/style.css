@@ -1051,7 +1051,7 @@ nav.navbar.scrolled { box-shadow: 0 10px 30px rgba(25,14,8,.1); padding-top: .5r
   .footer-grid-premium ul { gap: .28rem; }
   .footer-grid-premium a, .footer-grid-premium li { font-size: .9rem; }
 }
-.footer-premium .brand-logo { color: var(--cream); }
+.footer-premium .brand-logo { color: var(--cream) !important; }
 .foot-note { color: #cbbfae; font-size: .9rem; max-width: 22rem; margin: 0; }
 .footer-premium h4 { color: var(--gold-soft); }
 .footer-premium .footer-grid a { color: var(--cream); }
