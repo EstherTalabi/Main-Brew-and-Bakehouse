@@ -899,6 +899,10 @@ nav.navbar.scrolled { box-shadow: 0 10px 30px rgba(25,14,8,.1); padding-top: .5r
 .group-stepper .qty-num { color: #fff; font-size: 1.25rem; }
 .group-people { color: var(--gold-soft); font-size: .8rem; letter-spacing: 1.6px; text-transform: uppercase; }
 .group-summary { margin: .7rem 0 0; color: var(--gold-soft); font-weight: 500; font-size: .95rem; }
+.group-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+.group-choice label { display: block; margin-bottom: .35rem; color: var(--gold-soft); font-size: .72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.group-choice select { width: 100%; min-height: 42px; border: 1px solid rgba(201,162,106,.55); border-radius: 10px; padding: .5rem .65rem; background: var(--cream); color: var(--dark-brown); font-family: var(--sans); font-size: .9rem; }
+@media (max-width: 575.98px) { .group-choices { grid-template-columns: 1fr; } }
 .group-stub {
   padding: 1rem 1.25rem 1.2rem;
   border-top: 2px dashed rgba(201,162,106,.5);

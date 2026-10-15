@@ -301,19 +301,50 @@
   // ---- Group Office Box estimator (order page) ----
   const gCount = document.getElementById("gCount");
   if (gCount) {
-    const COFFEE = { name: "Flat White", price: 3200 };
-    const PASTRY = { name: "Butter Croissant", price: 2500 };
+    const COFFEE_OPTIONS = [
+      { name: "Espresso", price: 2500 }, { name: "Latte", price: 3200 },
+      { name: "Cappuccino", price: 3000 }, { name: "Flat White", price: 3200 },
+      { name: "Mocha", price: 3500 }, { name: "Sunrise Special", price: 5000 },
+      { name: "Spanish Latte", price: 3800 }, { name: "Iced Latte", price: 3300 },
+      { name: "Cold Brew", price: 3500 }
+    ];
+    const PASTRY_OPTIONS = [
+      { name: "Butter Croissant", price: 2500 }, { name: "Almond Croissant", price: 2800 },
+      { name: "Pain au Chocolat", price: 2900 }, { name: "Morning Bun", price: 2700 },
+      { name: "Banana Bread", price: 2500 }, { name: "Chocolate Muffin", price: 2500 },
+      { name: "Blueberry Scone", price: 2700 }, { name: "Cheesecake Slice", price: 3200 },
+      { name: "Carrot Cake Slice", price: 3000 }
+    ];
     // Team treat, honored by staff at pickup. Change both numbers in one place.
     const TEAM_TREAT_MIN = 10, TEAM_TREAT_PCT = 5;
     let heads = 6;
     const MINH = 5, MAXH = 50;
     const gSummary = document.getElementById("gSummary");
+    const gCoffee = document.getElementById("gCoffee");
+    const gPastry = document.getElementById("gPastry");
+
+    function populateChoices(select, items) {
+      if (!select) return;
+      select.innerHTML = items.map(function (item) {
+        return "<option value='" + item.name + "'>" + item.name + " • " + fmt(item.price) + "</option>";
+      }).join("");
+    }
+
+    function selectedChoice(select, items) {
+      const selected = items.find(function (item) { return item.name === (select && select.value); });
+      return selected || items[0];
+    }
+
+    populateChoices(gCoffee, COFFEE_OPTIONS);
+    populateChoices(gPastry, PASTRY_OPTIONS);
 
     function renderGroup() {
       gCount.textContent = heads;
-      const total = heads * (COFFEE.price + PASTRY.price);
+      const coffee = selectedChoice(gCoffee, COFFEE_OPTIONS);
+      const pastry = selectedChoice(gPastry, PASTRY_OPTIONS);
+      const total = heads * (coffee.price + pastry.price);
       if (gSummary) {
-        let txt = heads + " coffees plus " + heads + " pastries • about " + fmt(total);
+        let txt = heads + " x " + coffee.name + " plus " + heads + " x " + pastry.name + " • about " + fmt(total);
         if (heads >= TEAM_TREAT_MIN) {
           txt += ". Team treat unlocked • " + TEAM_TREAT_PCT + "% off • now about " + fmt(Math.round(total * (100 - TEAM_TREAT_PCT) / 100));
         } else {
@@ -331,19 +362,32 @@
     const gPlus = document.getElementById("gPlus");
     if (gMinus) gMinus.addEventListener("click", function () { if (heads > MINH) { heads -= 1; renderGroup(); } });
     if (gPlus) gPlus.addEventListener("click", function () { if (heads < MAXH) { heads += 1; renderGroup(); } });
+    if (gCoffee) gCoffee.addEventListener("change", renderGroup);
+    if (gPastry) gPastry.addEventListener("change", renderGroup);
 
     const gAdd = document.getElementById("gAddBtn");
     if (gAdd) {
       gAdd.addEventListener("click", function () {
-        const c = cart.find(function (i) { return i.name === COFFEE.name; });
-        if (c) c.qty += heads; else cart.push({ name: COFFEE.name, price: COFFEE.price, qty: heads });
-        const p = cart.find(function (i) { return i.name === PASTRY.name; });
-        if (p) p.qty += heads; else cart.push({ name: PASTRY.name, price: PASTRY.price, qty: heads });
+        const coffee = selectedChoice(gCoffee, COFFEE_OPTIONS);
+        const pastry = selectedChoice(gPastry, PASTRY_OPTIONS);
+        const c = cart.find(function (i) { return i.name === coffee.name; });
+        if (c) c.qty += heads; else cart.push({ name: coffee.name, price: coffee.price, qty: heads });
+        const p = cart.find(function (i) { return i.name === pastry.name; });
+        if (p) p.qty += heads; else cart.push({ name: pastry.name, price: pastry.price, qty: heads });
         save(); updateBadges();
         toast("Office box for " + heads + " added to bag", "View bag", "checkout.html");
       });
     }
     renderGroup();
+  }
+
+  const clearOrderCart = document.getElementById("clearOrderCart");
+  if (clearOrderCart) {
+    clearOrderCart.addEventListener("click", function () {
+      if (!cart.length) { toast("Your bag is already empty."); return; }
+      cart = []; save(); updateBadges();
+      toast("Bag cleared.");
+    });
   }
 
   // ---- Cart page ----

@@ -511,13 +511,23 @@
         </div>
         <div class="group-ticket" id="groupTicket">
           <div class="group-main">
-            <div class="group-stepper" aria-label="Number of people">
-              <button class="qty-btn" id="gMinus" aria-label="Fewer people">−</button>
-              <span class="qty-num" id="gCount">6</span>
-              <button class="qty-btn" id="gPlus" aria-label="More people">+</button>
-              <span class="group-people">people</span>
-            </div>
-            <p class="group-summary" id="gSummary" role="status" aria-live="polite"></p>
+             <div class="group-stepper" aria-label="Number of people">
+               <button class="qty-btn" id="gMinus" aria-label="Fewer people">−</button>
+               <span class="qty-num" id="gCount">6</span>
+               <button class="qty-btn" id="gPlus" aria-label="More people">+</button>
+               <span class="group-people">people</span>
+             </div>
+             <div class="group-choices">
+               <div class="group-choice">
+                 <label for="gCoffee">Coffee for each guest</label>
+                 <select id="gCoffee"></select>
+               </div>
+               <div class="group-choice">
+                 <label for="gPastry">Pastry for each guest</label>
+                 <select id="gPastry"></select>
+               </div>
+             </div>
+             <p class="group-summary" id="gSummary" role="status" aria-live="polite"></p>
           </div>
           <div class="group-stub">
             <button class="btn btn-cream w-100" id="gAddBtn">Add box to bag</button>
@@ -526,8 +536,9 @@
         </div>
       </section>
       <p class="text-center text-muted small mt-4 mb-0">All prices in naira. Pay on pickup. Baked fresh today.</p>
-      <div class="text-center mt-3 d-grid d-sm-block">
+      <div class="text-center mt-3 d-flex flex-column flex-sm-row justify-content-center gap-2">
         <a href="checkout.html" class="btn btn-dark-pill">Go to cart • <span id="menuCartTotal">₦0</span></a>
+        <button class="btn btn-dark-outline" id="clearOrderCart" type="button">Clear bag</button>
       </div>
     </div>
   </section>
@@ -562,13 +573,6 @@
           <li><a href="order.html">Order</a></li>
           <li><a href="find-us.html">Visit</a></li>
           <li><a href="checkout.html">Cart</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Visit</h4>
-        <ul>
-          <li>14 Herbert Macaulay Way, Yaba</li>
-          <li><a href="https://www.google.com/maps/search/14+Herbert+Macaulay+Way+Yaba+Lagos" target="_blank" rel="noopener">Get directions →</a></li>
         </ul>
       </div>
       <div>
