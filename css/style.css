@@ -452,6 +452,7 @@ textarea:focus-visible {
   object-position: center;
   display: block;
 }
+.pick-card .menu-photo { margin: -1.25rem -1.25rem 0.75rem; }
 
 /* ---------- VISIT / STORY ---------- */
 .visit-section {
