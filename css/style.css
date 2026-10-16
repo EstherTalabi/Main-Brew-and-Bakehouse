@@ -438,6 +438,20 @@ textarea:focus-visible {
 
 .menu-card.hidden { display: none; }
 .menu-count { color: var(--text-grey); font-size: 0.9rem; }
+.menu-photo {
+  margin: -1.3rem -1.3rem 0.8rem;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background: var(--cream-2);
+}
+.menu-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
 
 /* ---------- VISIT / STORY ---------- */
 .visit-section {

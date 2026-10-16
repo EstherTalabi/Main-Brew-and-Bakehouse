@@ -159,6 +159,91 @@
   }
   applySoldOut();
 
+  // ---- Menu photos. One real picture per dish, matched by exact item name. ----
+  var ITEM_PHOTOS = {
+    "Espresso": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=600&h=400&q=60",
+    "Macchiato": "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&h=400&q=60",
+    "Cortado": "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=600&h=400&q=60",
+    "Americano": "https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=600&h=400&q=60",
+    "Latte": "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&h=400&q=60",
+    "Cappuccino": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&h=400&q=60",
+    "Flat White": "https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=600&h=400&q=60",
+    "Mocha": "https://images.unsplash.com/photo-1517578239113-b03992dcdd25?auto=format&fit=crop&w=600&h=400&q=60",
+    "Affogato": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&h=400&q=60",
+    "Espresso Tonic": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&h=400&q=60",
+    "Sunrise Special": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&h=400&q=60",
+    "Spanish Latte": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&h=400&q=60",
+    "Honey Oat Latte": "https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&fit=crop&w=600&h=400&q=60",
+    "Salted Caramel Latte": "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=600&h=400&q=60",
+    "Pistachio Latte": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&h=400&q=60",
+    "Tiramisu Latte": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&h=400&q=60",
+    "Matcha Latte": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=600&h=400&q=60",
+    "Chai Latte": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&h=400&q=60",
+    "Iced Latte": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&h=400&q=60",
+    "Cold Brew": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&h=400&q=60",
+    "Iced Americano": "https://images.unsplash.com/photo-1517959105821-eaf2591984ca?auto=format&fit=crop&w=600&h=400&q=60",
+    "Orange Espresso Cooler": "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=600&h=400&q=60",
+    "Fresh Orange Juice": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&h=400&q=60",
+    "Mango Smoothie": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=400&q=60",
+    "Pineapple Ginger Cooler": "https://images.pexels.com/photos/5817623/pexels-photo-5817623.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    "Chocolate Frappe": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&h=400&q=60",
+    "Butter Croissant": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=400&q=60",
+    "Almond Croissant": "https://images.unsplash.com/photo-1757124034100-870a3badc2d8?auto=format&fit=crop&w=600&h=400&q=60",
+    "Pain au Chocolat": "https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=600&h=400&q=60",
+    "Morning Bun": "https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=600&h=400&q=60",
+    "Banana Bread": "https://images.unsplash.com/photo-1606101273945-e9eba91c0dc4?auto=format&fit=crop&w=600&h=400&q=60",
+    "Chocolate Muffin": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=600&h=400&q=60",
+    "Blueberry Scone": "https://images.pexels.com/photos/3412212/pexels-photo-3412212.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    "Sourdough Toast": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=600&h=400&q=60",
+    "Cheesecake Slice": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&h=400&q=60",
+    "Carrot Cake Slice": "https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=600&h=400&q=60",
+    "Earl Grey": "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=600&h=400&q=60",
+    "Green Tea": "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=600&h=400&q=60",
+    "Mint Tea": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&h=400&q=60",
+    "Hibiscus Tea": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&h=400&q=60",
+    "Eggs on Sourdough": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&h=400&q=60",
+    "Avocado Toast": "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=600&h=400&q=60",
+    "Granola Bowl": "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=600&h=400&q=60",
+    "Chicken Pie": "https://images.pexels.com/photos/5317326/pexels-photo-5317326.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    "Meat Pie": "https://images.pexels.com/photos/12469922/pexels-photo-12469922.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    "Full Breakfast": "https://images.pexels.com/photos/15352990/pexels-photo-15352990.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    "Chicken & Waffles": "https://images.unsplash.com/photo-1696935369633-eeb7ba94b92d?auto=format&fit=crop&w=600&h=400&q=60",
+    "Thick Cut French Toast": "https://images.pexels.com/photos/30900620/pexels-photo-30900620.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    "Classic Club Sandwich": "https://images.pexels.com/photos/28681955/pexels-photo-28681955.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+  };
+  var CATEGORY_FALLBACK = {
+    espresso: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=400&q=60",
+    specials: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&h=400&q=60",
+    cold: "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=600&h=400&q=60",
+    bakery: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=400&q=60",
+    tea: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&h=400&q=60",
+    plates: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&h=400&q=60"
+  };
+  document.querySelectorAll(".menu-card").forEach(function (card) {
+    var item = card.querySelector(".menu-item");
+    if (!item || item.querySelector(".menu-photo")) return;
+    var btn = card.querySelector(".add-btn");
+    var name = btn ? btn.getAttribute("data-name") : "";
+    var cat = card.getAttribute("data-category");
+    var src = ITEM_PHOTOS[name] || CATEGORY_FALLBACK[cat];
+    if (!src) return;
+    var wrap = document.createElement("div");
+    wrap.className = "menu-photo";
+    wrap.setAttribute("aria-hidden", "true");
+    var img = document.createElement("img");
+    img.alt = "";
+    img.loading = "lazy";
+    img.onerror = function () {
+      if (img.dataset.fbk) return;
+      img.dataset.fbk = "1";
+      img.src = CATEGORY_FALLBACK[cat] || "";
+    };
+    img.src = src;
+    wrap.appendChild(img);
+    item.insertBefore(wrap, item.firstChild);
+    if (name) item.setAttribute("data-photo-for", name);
+  });
+
   updateBadges();
 
   // ---- Menu: filter + search ----

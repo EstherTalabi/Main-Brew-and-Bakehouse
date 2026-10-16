@@ -19,7 +19,7 @@ everything runs inside the browser.
 
 Guests can:
   * Read the story of the shop
-  * Browse the menu (45 items across 6 categories)
+  * Browse the menu (49 items across 6 categories)
   * Search and filter the menu with instant results
   * Add items to a pickup bag (the cart)
   * Check out with name, phone, email and pickup time
@@ -37,7 +37,7 @@ Guests can:
   |                     reviews, team band, visit teaser)
   |-- our-story.html    About us page (story, roast/bake/brew,
   |                     promise and stats)
-  |-- order.html        Order page (search, filters, 45 items in
+  |-- order.html        Order page (search, filters, 49 items in
   |                     6 sections, Office Box band, sticky bag bar)
   |-- find-us.html      Visit page (address, hours, map, slim
   |                     Office Box link)

@@ -10,7 +10,7 @@ Brew and Bakehouse is a static website for a coffee and pastry shop at 14 Herber
 
 ### Order and menu
 
-* 45 items across 6 categories on `order.html`: espresso, signatures, cold, bakery, tea, plates
+* 49 items across 6 categories on `order.html`: espresso, signatures, cold, bakery, tea, plates
 * Instant search with top 6 suggestions plus full grid filtering
 * Category filters with live counts per section
 * Sold out support via one list in `js/script.js`
@@ -44,7 +44,7 @@ Brew and Bakehouse is a static website for a coffee and pastry shop at 14 Herber
 
 * `index.html` : Home. Hero, house standard, signatures, craft stats, story teaser, guest notes, team band
 * `our-story.html` : About. Story, roast plus bake plus brew process, promise and stats
-* `order.html` : Order. Search, filters, 45 items in 6 sections, Office Box, sticky bag bar
+* `order.html` : Order. Search, filters, 49 items in 6 sections, Office Box, sticky bag bar
 * `find-us.html` : Visit. Address, hours, map, Office Box link
 * `checkout.html` : Checkout. Bag, totals, form, WhatsApp lane, success message
 
