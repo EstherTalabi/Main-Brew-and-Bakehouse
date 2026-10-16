@@ -33,8 +33,9 @@ Guests can:
 
   brew and bakehouse folder
   |
-  |-- index.html        Home page (hero, signatures, craft story,
-  |                     reviews, team band, visit teaser)
+  |-- index.html        Home page (hero, signatures with photos,
+  |                     craft story, reviews, team band, visit
+  |                     teaser)
   |-- our-story.html    About us page (story, roast/bake/brew,
   |                     promise and stats)
   |-- order.html        Order page (search, filters, 49 items in
@@ -46,7 +47,9 @@ Guests can:
   |-- css/style.css     ALL the styling for every page
   |-- js/script.js      ALL the interactive logic, shared by
   |                     every page through one script tag
-  |-- images/           Photos used on Home and About
+  |-- images/           Local photos for Home hero and About.
+  |                     Menu photos load from online URLs in
+  |                     js/script.js (ITEM_PHOTOS), not from here.
   |-- README.md         Short project note
   |-- GUIDE.txt         This file. You are here.
 
@@ -261,6 +264,16 @@ K. Design tokens (:root in style.css):
    --cream, --espresso, --gold, --rust and shadows. To rebrand,
    change these values first before touching anything else.
 
+L. Menu photos injector (ITEM_PHOTOS block):
+   Runs once on load. For each .menu-card it reads the button
+   data-name, looks up the exact picture URL, and prepends a
+   .menu-photo banner with a lazy loaded decorative img
+   (empty alt, aria hidden, since the dish name is already in
+   the h3). Unknown names fall back to CATEGORY_FALLBACK and
+   broken URLs self heal through img onerror. Filtering,
+   counts and search ignore the banner because they read text
+   and data attributes only.
+
 ----------------------------------------------------------------
 7. HOUSE GUIDELINES (MUST FOLLOW)
 ----------------------------------------------------------------
@@ -303,8 +316,20 @@ ADD A MENU ITEM (example: Vanilla Latte, 3600, specials):
   3. Change the h3 name, the price text, the desc and BOTH
      data-name and data-price on the button (they must match).
   4. Keep copy dash free. Reload, search it, filter it, add it.
-  No JavaScript change needed. The grid, counts, search and
-  bag pick it up automatically.
+  The grid, counts, search and bag pick it up automatically.
+  5. Give it a photo: add one line to ITEM_PHOTOS in
+     js/script.js with the exact item name plus a picture URL
+     you have opened and checked first. Skip this and the card
+     shows the category fallback picture instead. If the card
+     also appears on Home signatures, paste the same URL into
+     its menu-photo img in index.html.
+
+MENU MAP TODAY (bakery holds 12 including both pies, plates
+holds 7 hearty items, total 49 dishes in 6 sections): Chicken
+Pie and Meat Pie live in bakery, not plates. New hearty plates
+are Full Breakfast, Chicken & Waffles, Thick Cut French
+Toast and Classic Club Sandwich. Prices live only in
+order.html (visible price plus data-price, always together).
 
 CHANGE A PRICE:
   Change the visible price AND data-price together. For Office
@@ -440,6 +465,24 @@ Hero on phones is compact (min-height 0, 84px bottom pad) so
 the paper curve shows on landing and never covers the Hours
 button. Touch those two values together or the button slides
 back under the curve.
+
+----------------------------------------------------------------
+10.10 Menu photos per dish (latest pass).
+Every menu card shows a photo banner (.menu-photo, 3 by 2,
+centered, lazy loaded). Photos are NOT files in images/.
+They are online URLs keyed by exact item name in ITEM_PHOTOS
+in js/script.js (49 entries, one per dish). Names must match
+data-name exactly or the card falls back to its category
+picture from CATEGORY_FALLBACK. New dishes without an entry
+also get the fallback, so the page never shows a broken
+image: each img has an onerror swap to the fallback.
+Home signatures (Sunrise Special, Almond Croissant,
+Flat White) carry the same URLs inline in index.html so both
+pages show identical pictures; the browser downloads each
+once and reuses it. To swap a picture: open the candidate
+URL in a browser first and look at it, then replace that one
+line. Never guess a photo ID blind. To add a dish photo,
+follow cookbook step 5 above.
 
 ----------------------------------------------------------------
 END OF GUIDE. Start by opening index.html in a browser, then
