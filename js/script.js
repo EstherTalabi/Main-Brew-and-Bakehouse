@@ -381,15 +381,6 @@
     renderGroup();
   }
 
-  const clearOrderCart = document.getElementById("clearOrderCart");
-  if (clearOrderCart) {
-    clearOrderCart.addEventListener("click", function () {
-      if (!cart.length) { toast("Your bag is already empty."); return; }
-      cart = []; save(); updateBadges();
-      toast("Bag cleared.");
-    });
-  }
-
   // ---- Cart page ----
   const cartBox = document.getElementById("cartBox");
   if (cartBox) {
